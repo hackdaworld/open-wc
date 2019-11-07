@@ -1,5 +1,6 @@
 const { rollup } = require('rollup');
 const { createCompatibilityConfig } = require('@open-wc/building-rollup');
+const { DEFAULT_EXTENSIONS } = require('@babel/core');
 const indexHTML = require('rollup-plugin-index-html');
 const cpy = require('rollup-plugin-cpy');
 const fs = require('fs-extra');
@@ -26,10 +27,11 @@ async function buildManager(outputDir, assets) {
 async function buildPreview(outputDir, assets) {
   const configs = createCompatibilityConfig({
     input: 'noop',
+    extensions: [...DEFAULT_EXTENSIONS, 'mdx'],
     plugins: { indexHTML: false },
   });
 
-  configs[0].output.dir = outputDir;
+  configs[0].output.dir = path.join(outputDir, 'legacy');
   configs[1].output.dir = outputDir;
 
   configs[0].plugins.unshift(
