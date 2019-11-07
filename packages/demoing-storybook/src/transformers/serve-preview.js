@@ -9,5 +9,6 @@ module.exports = function createServePreviewTransformer(assets) {
     if (cleanURL === '/iframe.html') {
       return { body: assets.iframeHTML, contentType: 'text/html' };
     }
+    return null;
   };
 };

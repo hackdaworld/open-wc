@@ -10,7 +10,7 @@ module.exports = function createServeManagerMiddleware(assets) {
       ctx.body = assets.indexHTML;
       ctx.status = 200;
       ctx.response.set('content-type', 'text/html');
-      return;
+      return null;
     }
 
     if (cleanURL === assets.managerScriptSrc) {
@@ -19,7 +19,7 @@ module.exports = function createServeManagerMiddleware(assets) {
       ctx.response.set('content-type', 'text/javascript');
       // the manager code is hashed, so we can cache it forever
       ctx.response.set('cache-control', 'public, max-age=31536000');
-      return;
+      return null;
     }
     return next();
   };

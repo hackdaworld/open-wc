@@ -5,15 +5,20 @@ import {
   setCustomElements,
   withA11y,
 } from '../../index.js';
-import * as indexStories from '../stories/foo.stories.js';
-import * as demoCardStories from '../stories/demo-wc-card.stories.mdx';
-// import * as withKnobsStories from '../stories/withWebComponentsKnobs.stories.mdx';
 
 async function run() {
   const customElements = await (await fetch(
     new URL('../custom-elements.json', import.meta.url),
   )).json();
   setCustomElements(customElements);
+
+  const storyFileUrls = await (await fetch(
+    new URL(encodeURI('/get-story-urls?pattern=../stories/*.stories.{js,mdx}'), import.meta.url),
+  )).json();
+
+  const stories = await Promise.all(
+    storyFileUrls.map(fileUrl => new URL(fileUrl, location.href)).map(urlObj => import(urlObj)),
+  );
 
   addDecorator(withA11y);
 
@@ -33,8 +38,7 @@ async function run() {
     },
   });
 
-  // configure(() => [indexStories, demoCardStories, withKnobsStories], {});
-  configure(() => [indexStories, demoCardStories], {});
+  configure(() => stories, {});
 }
 
 run();
