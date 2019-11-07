@@ -7,6 +7,7 @@ Need:
 - getStoryUrlMiddleware: security do not allow to check files outside of server
 - export neede stuff from '@storybook/addon-docs' via prebuilt... so we do not need the dependency
 - cleanup demo folder
+- make storybook-start work on IE11
 
 Nice to have:
 
