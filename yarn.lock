@@ -2120,10 +2120,10 @@
   resolved "https://registry.yarnpkg.com/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.13.21.tgz#718b9ec5f9a98935fc775e577ad094ae8d8b7dea"
   integrity sha512-BONpjHcGX2zFa9mfnwBCLEmlDsOHzT+j6Qt1yfK3MzFXFtAykfzFjAgaxPetu0YbBlCfXuMlfxI4vlRGCGMvFg==
 
-"@open-wc/storybook-prebuilt@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@open-wc/storybook-prebuilt/-/storybook-prebuilt-0.0.1.tgz#8d5eea3ad54a1329087641da192d6641faaab14f"
-  integrity sha512-405aWdhc369Ap3/fA3LpaZ5EKtkHfcyjWc+zNzp5jb6wBsZC99a514NnGEDgXG6+F7GPDJifoqmF/eh5hrttsQ==
+"@open-wc/storybook-prebuilt@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@open-wc/storybook-prebuilt/-/storybook-prebuilt-0.0.2.tgz#f07d04e516a3fef7836ec98937c5f43933b23826"
+  integrity sha512-920ZmyZE229jb2BBOx2/+S7XuGnXLJG2Ehs2RBTh33R3NMKCZpm25lgCEw74Ur0x9bKucJWFso6o1xdOEddj1A==
 
 "@open-wc/testing-karma-bs@file:./packages/testing-karma-bs":
   version "1.2.14"

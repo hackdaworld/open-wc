@@ -9,8 +9,7 @@ function createContentHash(content) {
     .digest('hex');
 }
 
-module.exports = function getAssets({ rootDir, storybookConfigDir }) {
-  console.log('storybookConfigDir', storybookConfigDir);
+module.exports = function getAssets({ storybookConfigDir }) {
   const managerPath = path.join(__dirname, 'index.html');
   const iframePath = path.join(__dirname, 'iframe.html');
   const managerHeadPath = path.join(process.cwd(), storybookConfigDir, 'manager-head.html');

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-const { createConfig, startServer, messageChannelEndpoint } = require('es-dev-server');
+const { createConfig, startServer } = require('es-dev-server');
 const readCommandLineArgs = require('./command-line-args');
 const createServeManagerMiddleware = require('./middleware/serve-manager');
+const createGetStoriesMiddleware = require('./middleware/createGetStoryUrlsMiddleware');
 const createServePreviewTransformer = require('./transformers/serve-preview');
 const mdxToJSTransformer = require('./transformers/mdx-to-js');
 const createAssets = require('./create-assets');
@@ -12,6 +13,7 @@ const assets = createAssets({ storybookConfigDir });
 
 config.esDevServerConfig.middlewares = [
   createServeManagerMiddleware(assets),
+  createGetStoriesMiddleware({ storybookConfigDir }),
   ...(config.esDevServerConfig.middlewares || []),
 ];
 
