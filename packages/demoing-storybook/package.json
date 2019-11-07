@@ -4,6 +4,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "bin": {
+    "storybook-start": "src/start/cli.js",
+    "storybook-build": "src/build/cli.js"
+  },
   "description": "Storybook configuration following open-wc recommendations",
   "license": "MIT",
   "repository": {
