@@ -5,37 +5,36 @@ import {
   setCustomElements,
   withA11y,
 } from '../../index.js';
-import customElements from '../custom-elements.json';
+import * as indexStories from '../stories/foo.stories.js';
+import * as demoCardStories from '../stories/demo-wc-card.stories.mdx';
+// import * as withKnobsStories from '../stories/withWebComponentsKnobs.stories.mdx';
 
-setCustomElements(customElements);
+async function run() {
+  const customElements = await (await fetch(
+    new URL('../custom-elements.json', import.meta.url),
+  )).json();
+  setCustomElements(customElements);
 
-addDecorator(withA11y);
+  addDecorator(withA11y);
 
-addParameters({
-  a11y: {
-    config: {},
-    options: {
-      checks: { 'color-contrast': { options: { noScroll: true } } },
-      restoreScroll: true,
+  addParameters({
+    a11y: {
+      config: {},
+      options: {
+        checks: { 'color-contrast': { options: { noScroll: true } } },
+        restoreScroll: true,
+      },
     },
-  },
-  options: {
-    hierarchyRootSeparator: /\|/,
-  },
-  docs: {
-    iframeHeight: '200px',
-  },
-});
-
-// configure(require.context('../stories', true, /\.stories\.(js|mdx)$/), module);
-
-// force full reload to not reregister web components
-const req = require.context('../stories', true, /\.stories\.(js|mdx)$/);
-configure(req, module);
-if (module.hot) {
-  module.hot.accept(req.id, () => {
-    const currentLocationHref = window.location.href;
-    window.history.pushState(null, null, currentLocationHref);
-    window.location.reload();
+    options: {
+      hierarchyRootSeparator: /\|/,
+    },
+    docs: {
+      iframeHeight: '200px',
+    },
   });
+
+  // configure(() => [indexStories, demoCardStories, withKnobsStories], {});
+  configure(() => [indexStories, demoCardStories], {});
 }
+
+run();
