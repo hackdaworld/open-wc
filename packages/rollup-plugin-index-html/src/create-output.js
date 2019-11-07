@@ -90,14 +90,14 @@ function injectIntoIndexHTML(pluginConfig, inputIndexHTML, entries, legacyEntrie
       legacyEntries,
     });
 
-    return [{ path: 'index.html', content: result.indexHTML }, ...result.files];
+    return [{ path: pluginConfig.indexFilename, content: result.indexHTML }, ...result.files];
   }
 
   /**
    * If injection is disabled the user takes control, probably with it's own template.
    */
   const serialized = serialize(inputIndexHTML);
-  return [{ path: 'index.html', content: minifyIndexHTML(serialized) }];
+  return [{ path: pluginConfig.indexFilename, content: minifyIndexHTML(serialized) }];
 }
 
 /**
