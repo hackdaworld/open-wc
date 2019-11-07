@@ -2124,6 +2124,31 @@
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@open-wc/storybook-prebuilt/-/storybook-prebuilt-0.0.2.tgz#f07d04e516a3fef7836ec98937c5f43933b23826"
   integrity sha512-920ZmyZE229jb2BBOx2/+S7XuGnXLJG2Ehs2RBTh33R3NMKCZpm25lgCEw74Ur0x9bKucJWFso6o1xdOEddj1A==
+<<<<<<< HEAD
+=======
+
+"@open-wc/testing-karma-bs@file:./packages/testing-karma-bs":
+  version "1.2.14"
+  dependencies:
+    "@open-wc/testing-karma" "^3.1.53"
+    "@types/node" "^11.13.0"
+    karma-browserstack-launcher "^1.0.0"
+
+"@open-wc/testing-karma@file:./packages/testing-karma":
+  version "3.1.53"
+  dependencies:
+    "@open-wc/karma-esm" "^2.9.7"
+    axe-core "^3.3.1"
+    karma "^4.1.0"
+    karma-chrome-launcher "^2.0.0"
+    karma-coverage-istanbul-reporter "^2.0.0"
+    karma-mocha "^1.0.0"
+    karma-mocha-reporter "^2.0.0"
+    karma-mocha-snapshot "^0.2.1"
+    karma-snapshot "^0.6.0"
+    karma-source-map-support "^1.3.0"
+    mocha "^6.0.0"
+>>>>>>> 824308f0c2cbcf1c1a3ed7a9842d415f26e406d1
 
 "@reach/router@^1.2.1":
   version "1.2.1"
@@ -3083,11 +3108,14 @@ acorn@^6.0.7, acorn@^6.2.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.3.0.tgz#0087509119ffa4fc0a0041d1e93a417e68cb856e"
   integrity sha512-/czfa8BwS88b9gWQVhc8eknunSA2DoJpJyTQkhheIf5E48u1N0R4q/YxxsAeqRrmK9TQ/uYfgLDfZo91UlANIA==
 
+<<<<<<< HEAD
 acorn@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.0.tgz#949d36f2c292535da602283586c2477c57eb2d6c"
   integrity sha512-kL5CuoXA/dgxlBbVrflsflzQ3PAas7RYZB52NOm/6839iVYJgKMJ3cQJD+t2i5+qFa8h3MDpEOJiS64E8JLnSQ==
 
+=======
+>>>>>>> 824308f0c2cbcf1c1a3ed7a9842d415f26e406d1
 after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
@@ -13138,6 +13166,7 @@ rollup@^1.15.6:
     "@types/node" "^12.6.9"
     acorn "^6.2.1"
 
+<<<<<<< HEAD
 rollup@^1.26.3:
   version "1.26.3"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.26.3.tgz#3e71b8120a4ccc745a856e926cab0efbe0eead90"
@@ -13147,6 +13176,8 @@ rollup@^1.26.3:
     "@types/node" "*"
     acorn "^7.1.0"
 
+=======
+>>>>>>> 824308f0c2cbcf1c1a3ed7a9842d415f26e406d1
 run-async@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.3.0.tgz#0371ab4ae0bdd720d4166d7dfda64ff7a445a6c0"
