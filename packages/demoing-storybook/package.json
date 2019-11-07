@@ -17,9 +17,9 @@
   "scripts": {
     "prepublishOnly": "../../scripts/insert-header.js",
     "site:buildxxxx": "build-storybook -c demo/.storybook -o ../../_site/demoing-storybook",
-    "storybook": "cd ../.. && node packages/demoing-storybook/src/cli.js --config-dir packages/demoing-storybook/demo/.storybook --node-resolve --watch --open",
-    "build:start": "es-dev-server --root-dir ../../static-storybook --app-index index.html --open",
-    "storybook:build": "build-storybook -c demo/.storybook"
+    "storybook:start": "cd ../.. && node packages/demoing-storybook/src/start/cli.js --config-dir packages/demoing-storybook/demo/.storybook --node-resolve --watch --open",
+    "storybook:build": "node src/build/cli.js --config-dir demo/.storybook",
+    "build:start": "es-dev-server --root-dir ../../static-storybook --app-index index.html --open"
   },
   "files": [
     "*.js",
@@ -45,10 +45,7 @@
     "@open-wc/storybook-prebuilt": "^0.0.2",
     "@storybook/addon-docs": "^5.2.5",
     "es-dev-server": "^1.23.1",
-    "glob": "^7.1.3"
-  },
-  "devDependencies": {
-    "babel-loader": "^8.0.0",
+    "glob": "^7.1.3",
     "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
     "rollup": "^1.26.3",

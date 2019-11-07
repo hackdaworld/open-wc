@@ -4,8 +4,8 @@ const indexHTML = require('rollup-plugin-index-html');
 const cpy = require('rollup-plugin-cpy');
 const fs = require('fs-extra');
 const path = require('path');
-const createMdxToJsTransformer = require('../utils/createMdxToJsTransformer');
-const createAssets = require('../create-assets');
+const createMdxToJsTransformer = require('../shared/createMdxToJsTransformer');
+const createAssets = require('../shared/create-assets');
 
 const transformMdxToJs = createMdxToJsTransformer(false);
 
@@ -23,7 +23,7 @@ async function buildManager(outputDir, assets) {
   await fs.writeFile(path.join(outputDir, assets.managerScriptSrc), assets.managerCode);
 }
 
-async function buildPreview(storybookConfigDir, outputDir, assets) {
+async function buildPreview(outputDir, assets) {
   const configs = createCompatibilityConfig({
     input: 'noop',
     plugins: { indexHTML: false },
@@ -83,11 +83,9 @@ async function buildPreview(storybookConfigDir, outputDir, assets) {
 
 module.exports = async function build({ storybookConfigDir, outputDir }) {
   const assets = createAssets({ storybookConfigDir });
+
   await fs.remove(outputDir);
   await fs.mkdirp(outputDir);
 
-  await Promise.all([
-    buildManager(outputDir, assets),
-    buildPreview(storybookConfigDir, outputDir, assets),
-  ]);
+  await Promise.all([buildManager(outputDir, assets), buildPreview(outputDir, assets)]);
 };

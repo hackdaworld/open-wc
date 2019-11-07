@@ -5,7 +5,7 @@ const createServeManagerMiddleware = require('./middleware/serve-manager');
 const createGetStoriesMiddleware = require('./middleware/createGetStoryUrlsMiddleware');
 const createServePreviewTransformer = require('./transformers/serve-preview');
 const mdxToJSTransformer = require('./transformers/mdx-to-js');
-const createAssets = require('./create-assets');
+const createAssets = require('../shared/create-assets');
 
 const config = readCommandLineArgs();
 const storybookConfigDir = config.storybookServerConfig['config-dir'];

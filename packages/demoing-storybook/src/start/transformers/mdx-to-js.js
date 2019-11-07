@@ -1,5 +1,5 @@
 const fs = require('fs');
-const createMdxToJsTransformer = require('../utils/createMdxToJsTransformer');
+const createMdxToJsTransformer = require('../../shared/createMdxToJsTransformer');
 
 const transformMdxToJs = createMdxToJsTransformer(true);
 
