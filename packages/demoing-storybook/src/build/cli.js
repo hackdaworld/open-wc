@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const build = require('./build');
-const readCommandLineArgs = require('./command-line-args');
+const readCommandLineArgs = require('./readCommandLineArgs');
 
 (async function main() {
   const config = readCommandLineArgs();
