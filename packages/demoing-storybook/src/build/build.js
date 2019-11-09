@@ -83,8 +83,8 @@ async function buildPreview(outputDir, assets) {
   await bundles[1].write(configs[1].output);
 }
 
-module.exports = async function build({ storybookConfigDir, outputDir }) {
-  const assets = createAssets({ storybookConfigDir });
+module.exports = async function build({ storybookConfigDir, outputDir, storyUrls }) {
+  const assets = createAssets({ storybookConfigDir, storyUrls });
 
   await fs.remove(outputDir);
   await fs.mkdirp(outputDir);

@@ -9,7 +9,7 @@ function createContentHash(content) {
     .digest('hex');
 }
 
-module.exports = function getAssets({ storybookConfigDir }) {
+module.exports = function getAssets({ storybookConfigDir, storyUrls }) {
   const managerPath = path.join(__dirname, 'index.html');
   const iframePath = path.join(__dirname, 'iframe.html');
   const managerHeadPath = path.join(process.cwd(), storybookConfigDir, 'manager-head.html');
@@ -44,7 +44,19 @@ module.exports = function getAssets({ storybookConfigDir }) {
 
   iframeHTML = iframeHTML.replace(
     '</body>',
-    `<script type="module" src="${storybookConfigDir}/preview.js"></script>`,
+    `
+      </body>
+      <script type="module" src="${storybookConfigDir}/preview.js"></script>
+      <script type="module">
+        import { configure } from '@open-wc/storybook-prebuilt';
+
+        Promise.all([
+          ${storyUrls.map(url => `import('./${url}')`).join(',\n')}
+        ]).then(stories => {
+          configure(() => stories, {});
+        });
+      </script>
+    `,
   );
 
   return {

@@ -17,9 +17,19 @@ module.exports = function readCommandLineArgs() {
       defaultValue: path.join(process.cwd(), 'static-storybook'),
       description: 'Rollup build output directory',
     },
+    {
+      name: 'stories',
+      alias: 's',
+      description: 'List of story files e.g. --stories stories/*.stories.{js,mdx}',
+    },
   ];
 
   const storybookServerConfig = commandLineArgs(optionDefinitions);
+
+  if (!storybookServerConfig.stories) {
+    console.log(`You have to provide stories like --stories './stories/*.stories.{js,mdx}'`);
+    process.exit(1);
+  }
 
   return storybookServerConfig;
 };

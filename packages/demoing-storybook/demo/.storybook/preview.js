@@ -1,13 +1,4 @@
-import {
-  configure,
-  addParameters,
-  addDecorator,
-  setCustomElements,
-  withA11y,
-} from '../../index.js';
-import * as csfStories from '../stories/csf.stories.js';
-import * as cardStories from '../stories/demo-wc-card.stories.mdx';
-import * as knobsStories from '../stories/withWebComponentsKnobs.stories.mdx';
+import { addParameters, addDecorator, setCustomElements, withA11y } from '../../index.js';
 
 async function run() {
   const customElements = await (await fetch(
@@ -32,8 +23,6 @@ async function run() {
       iframeHeight: '200px',
     },
   });
-
-  configure(() => [csfStories, cardStories, knobsStories], {});
 }
 
 run();

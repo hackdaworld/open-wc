@@ -1,31 +1,45 @@
 #!/usr/bin/env node
+
+/* eslint-disable no-console */
+
 const { createConfig, startServer } = require('es-dev-server');
+
 const readCommandLineArgs = require('./readCommandLineArgs');
 const createServeManagerMiddleware = require('./middleware/createServeManagerMiddleware');
 const createServePreviewTransformer = require('./transformers/createServePreviewTransformer');
 const mdxToJSTransformer = require('./transformers/mdxToJS');
-const createAssets = require('../shared/getAssets');
+const getAssets = require('../shared/getAssets');
+const listFiles = require('../shared/listFiles');
 
-const config = readCommandLineArgs();
-const storybookConfigDir = config.storybookServerConfig['config-dir'];
-const assets = createAssets({ storybookConfigDir });
+async function run() {
+  const config = readCommandLineArgs();
+  const storybookConfigDir = config.storybookServerConfig['config-dir'];
+  const storiesPattern = `${process.cwd()}/${config.storybookServerConfig.stories}`;
+  const storyUrls = (await listFiles(storiesPattern)).map(path =>
+    path.replace(`${process.cwd()}/`, ''),
+  );
 
-config.esDevServerConfig.middlewares = [
-  createServeManagerMiddleware(assets),
-  ...(config.esDevServerConfig.middlewares || []),
-];
+  const assets = getAssets({ storybookConfigDir, storyUrls });
 
-config.esDevServerConfig.responseTransformers = [
-  mdxToJSTransformer,
-  createServePreviewTransformer(assets),
-  ...(config.esDevServerConfig.responseTransformers || []),
-];
+  config.esDevServerConfig.middlewares = [
+    createServeManagerMiddleware(assets),
+    ...(config.esDevServerConfig.middlewares || []),
+  ];
 
-startServer(createConfig(config.esDevServerConfig));
+  config.esDevServerConfig.responseTransformers = [
+    mdxToJSTransformer,
+    createServePreviewTransformer(assets),
+    ...(config.esDevServerConfig.responseTransformers || []),
+  ];
 
-['exit', 'SIGINT'].forEach(event => {
-  // @ts-ignore
-  process.on(event, () => {
-    process.exit(0);
+  startServer(createConfig(config.esDevServerConfig));
+
+  ['exit', 'SIGINT'].forEach(event => {
+    // @ts-ignore
+    process.on(event, () => {
+      process.exit(0);
+    });
   });
-});
+}
+
+run();
