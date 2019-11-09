@@ -21,8 +21,8 @@
   "scripts": {
     "prepublishOnly": "../../scripts/insert-header.js",
     "site:buildxxxx": "build-storybook -c demo/.storybook -o ../../_site/demoing-storybook",
-    "storybook:start": "cd ../.. && node packages/demoing-storybook/src/start/cli.js --config-dir packages/demoing-storybook/demo/.storybook --node-resolve --watch --open",
-    "storybook:start:compatibility": "cd ../.. && node packages/demoing-storybook/src/start/cli.js --config-dir packages/demoing-storybook/demo/.storybook --compatibility all --node-resolve --watch --open",
+    "storybook": "cd ../.. && node packages/demoing-storybook/src/start/cli.js --config-dir packages/demoing-storybook/demo/.storybook --node-resolve --watch --open",
+    "storybook:compatibility": "cd ../.. && node packages/demoing-storybook/src/start/cli.js --config-dir packages/demoing-storybook/demo/.storybook --compatibility all --node-resolve --watch --open",
     "storybook:build": "node src/build/cli.js --config-dir demo/.storybook",
     "build:start": "es-dev-server --root-dir static-storybook --app-index index.html --open"
   },

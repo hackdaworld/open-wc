@@ -5,7 +5,7 @@ import {
   setCustomElements,
   withA11y,
 } from '../../index.js';
-import * as fooStories from '../stories/foo.stories.js';
+import * as csfStories from '../stories/csf.stories.js';
 import * as cardStories from '../stories/demo-wc-card.stories.mdx';
 import * as knobsStories from '../stories/withWebComponentsKnobs.stories.mdx';
 
@@ -33,7 +33,7 @@ async function run() {
     },
   });
 
-  configure(() => [fooStories, cardStories, knobsStories], {});
+  configure(() => [csfStories, cardStories, knobsStories], {});
 }
 
 run();

@@ -6,7 +6,7 @@ const cpy = require('rollup-plugin-cpy');
 const fs = require('fs-extra');
 const path = require('path');
 const createMdxToJsTransformer = require('../shared/createMdxToJsTransformer');
-const createAssets = require('../shared/create-assets');
+const createAssets = require('../shared/getAssets');
 
 const transformMdxToJs = createMdxToJsTransformer(false);
 

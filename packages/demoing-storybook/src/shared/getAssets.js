@@ -44,7 +44,7 @@ module.exports = function getAssets({ storybookConfigDir }) {
 
   iframeHTML = iframeHTML.replace(
     '</body>',
-    `<script type="module" src="${storybookConfigDir}/config.js"></script>`,
+    `<script type="module" src="${storybookConfigDir}/preview.js"></script>`,
   );
 
   return {
